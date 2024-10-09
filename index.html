@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e1f0fa; /* Light blue */
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #003f63; /* Dark blue */
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar h1 {
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            background-color: #0073e6; /* Blue */
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .navbar a:hover {
+            color: #ffffff; /* Light blue */
+            background-color: #328eea; /* Blue */
+        }
+
+        .hero {
+            height: 70vh;
+            background: url('H:/Sem 3/capstone/frontend/img1.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            transition: background 0.5s ease;
+        }
+
+        .hero:hover {
+            background: url('H:/Sem 3/capstone/frontend/img1.jpg') no-repeat center center/cover;
+            opacity: 0.9;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        .search-section {
+            background-color: #f0f9ff; /* Very light blue */
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            margin-top: -50px;
+            z-index: 10;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-control, .btn {
+            height: 55px;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: #0073e6; /* Medium blue */
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #005bb5; /* Darker blue */
+        }
+
+        .features {
+            padding: 60px 20px;
+            background-color: #e1f0fa;
+            text-align: center;
+        }
+
+        .features h3 {
+            margin-bottom: 40px;
+            font-weight: 700;
+            font-size: 2rem;
+            color: #003f63;
+        }
+
+        .feature-item i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #0073e6;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .offer-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+        .feature-item:hover i {
+            transform: scale(1.2);
+            color: #005bb5; /* Hover color change for icons */
+        }
+
+        .footer {
+            background-color: #003f63;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .offers, .about {
+            margin-top: 40px;
+        }
+
+        .offers h4, .about h4 {
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .offers p, .about p {
+            font-size: 1rem;
+        }
+        
+        .link-text {
+            color: #003f63; /* Keep the text color dark blue */
+            text-decoration: none; /* Remove underline */
+            font-weight: 500; /* Keep consistent font weight */
+        }
+        
+        .about-box {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.about-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+h4 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: square; /* Change bullet style */
+    padding-left: 20px; /* Space on the left */
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>FlySmart</h1>
+        <a href="login.html" class="btn btn-light">Login</a>
+    </nav>
+
+    <section class="hero">
+        <div class="text-center">
+            <h2>Find the Best Flights for Your Trip</h2>
+        </div>
+    </section>
+
+    <section class="search-section container">
+        <form id="flightSearchForm">
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="departureCity" placeholder="Departure City" list="suggestions" required>
+                    <datalist id="suggestions">
+                        <option value="New York">
+                        <option value="Los Angeles">
+                        <option value="Chicago">
+                        <option value="Houston">
+                        <option value="Phoenix">
+                        <option value="Philadelphia">
+                    </datalist>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="destinationCity" placeholder="Destination City" list="destinations" required>
+                    <datalist id="destinations">
+                        <option value="New York">
+                        <option value="Los Angeles">
+                        <option value="Chicago">
+                        <option value="Houston">
+                        <option value="Phoenix">
+                        <option value="Philadelphia">
+                    </datalist>
+                </div>
+                <div class="col-md-3">
+                    <input type="date" class="form-control" id="departureDate" required>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary w-100">Search Flights</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <section class="features container">
+        <h3>Do More With FlySmart</h3>
+        <div class="row justify-content-center">
+            <div class="col-md-2 feature-item">
+                <a href="https://www.ixigo.com/flight-status" target="_blank" class="link-text">
+                <i class="fa-solid fa-plane-circle-check"></i>
+                <h5>Flight Tracker</h5>
+                </a>
+            </div>
+            <div class="col-md-2 feature-item">
+                <a href="https://ixigo.visa2fly.com/" target="_blank" class="link-text">
+                <i class="fa-brands fa-cc-visa"></i>
+                <h5>Book Visa</h5>
+                </a>
+            </div>
+            <div class="col-md-2 feature-item">
+                <a href="https://www.acko.com/gi/travel/buy-base?utm_source=affiliate&utm_medium=ixigo/" target="_blank" class="link-text">
+                <i class="fa-solid fa-hospital-user"></i>
+                <h5>Travel Insurance</h5>
+                </a>
+            </div>
+            <div class="col-md-2 feature-item">
+                <a href="https://www.uber.com/in/en/" target="_blank" class="link-text">
+                    <i class="fa-solid fa-car"></i>
+                    <h5>Car Rentals</h5>
+                </a>
+            </div>
+        </div>
+
+        <section class="offers container my-5">
+            <h4 style="color: #003f63;">Exclusive Offers</h4>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="offer-box" style="border: 2px solid #003f63; border-radius: 10px; padding: 20px; background-color: #e0f7fa; transition: transform 0.3s; cursor: pointer;">
+                        <h5 style="color: #003f63;">🎉 Book Now and Get <span style="font-weight: bold; color: #ff5722; font-size: 1.5rem;">20% OFF</span> on Your First Flight!</h5>
+                        <p>Discover amazing destinations at unbeatable prices. Don’t miss out!</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="offer-box" style="border: 2px solid #003f63; border-radius: 10px; padding: 20px; background-color: #e0f7fa; transition: transform 0.3s; cursor: pointer;">
+                        <h5 style="color: #003f63;">🌟 Join Our Loyalty Program</h5>
+                        <p>Sign up now for exclusive discounts and rewards on your future flights!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        
+    </section>
+    <section class="about container my-5">
+        <h4 class="text-center mb-4" style="color: #003f63;">About Us</h4>
+        <div class="about-box" style="border: 2px solid #003f63; border-radius: 15px; padding: 20px; background-color: #00426e; color: #e1f0fa; transition: transform 0.3s; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+            <p>FlySmart is your trusted partner for seamless travel experiences. We specialize in offering the best flight deals, ensuring that you can find affordable and convenient options for your journeys. Our user-friendly platform allows you to:</p>
+            <ul>
+                <li><strong>Search and Compare Flights:</strong> Easily compare prices from various airlines to find the best deals.</li>
+                <li><strong>Book with Confidence:</strong> Enjoy a secure booking process with real-time availability.</li>
+                <li><strong>Access Exclusive Offers:</strong> Sign up for our loyalty program and receive discounts and special promotions.</li>
+                <li><strong>Travel Insurance:</strong> Protect your trip with our comprehensive travel insurance options.</li>
+                <li><strong>Car Rentals:</strong> Conveniently book car rentals through our platform to complete your travel plans.</li>
+            </ul>
+            <p>Join the FlySmart community today and embark on your next adventure with ease!</p>
+        </div>
+    </section>
+    
+    
+
+    <footer class="footer">
+        <p>&copy; 2024 FlySmart. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('flightSearchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const departureCity = document.getElementById('departureCity').value;
+            const destinationCity = document.getElementById('destinationCity').value;
+            const departureDate = document.getElementById('departureDate').value;
+
+            const url = 'available-flights.html?departureCity=' + encodeURIComponent(departureCity) + '&destinationCity=' + encodeURIComponent(destinationCity) + '&departureDate=' + encodeURIComponent(departureDate);
+            window.location.href = url;
+        });
+    </script>
+</body>
+</html>
